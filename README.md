@@ -78,7 +78,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## License
 
-This project depends to [animate.css](https://github.com/daneden/animate.css) which is also licensed under [MIT](https://github.com/daneden/animate.css/blob/master/LICENSE), this project is also released under the MIT License by [codekraft-studio](https://codekraft.it/),
+This project depends to [animate.css](https://github.com/daneden/animate.css) which is also licensed under [MIT](https://github.com/daneden/animate.css/blob/master/LICENSE), this project is also released under the MIT License by [codekraft-studio](https://codekraft.it/).
 
 
 [npm-image]: https://badge.fury.io/js/%40codekraft-studio%2Fvue-animated.svg

@@ -7,6 +7,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name VueAnimated src/components/index.js",
     "build:demo": "vue-cli-service build --dest demo",
+    "publish:demo": "git subtree push --prefix demo origin gh-pages",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit"
   },
@@ -28,5 +29,8 @@
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.17"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
