@@ -8,66 +8,114 @@
       </div>
     </header>
 
-    <section>
-      <div class="transition-container">
-        <AnimatedTransition :enter="enterAnimation" :leave="leaveAnimation">
-          <div v-if="show" class="box"></div>
-        </AnimatedTransition>
+    <section class="container">
+      <div class="transition-container absolute">
+        <Animated
+          :enter="exampleTwo.enter.name"
+          :leave="exampleTwo.leave.name"
+          :mode="exampleTwo.mode"
+          :duration="{enter: exampleTwo.enter.duration, leave: exampleTwo.leave.duration}"
+        >
+          <div :key="exampleTwo.visible" class="box">MODE</div>
+        </Animated>
       </div>
-
-      <button class="show-button" @click="show = !show">
-        {{show ? 'Hide' : 'Show'}}
-      </button>
 
       <div class="controls-container">
-        <div class="enter-animation">
-          <h3 class="headline">Enter animation</h3>
-          <div class="form-group">
-            <AnimationSelect v-model="enterAnimation.name" />
-          </div>
+        <div class="animation-mode">
+          <h2 class="headline">Animation Mode</h2>
 
-          <div class="form-group">
-            <input type="number" v-model="enterAnimation.duration">
+          <input type="radio" value="out-in" v-model="exampleTwo.mode">Out in
+          <input type="radio" value="in-out" v-model="exampleTwo.mode">In Out
+        </div>
+
+        <div class="animation-names">
+          <div class="enter-animation">
+            <h2 class="headline">Enter animation</h2>
+            <div class="form-group">
+              <AnimationSelect v-model="exampleTwo.enter.name" />
+            </div>
+
+            <div class="form-group">
+              <input type="number" v-model="exampleTwo.enter.duration">
+            </div>
+          </div>
+          <div class="leave-animation">
+            <h2 class="headline">Leave animation</h2>
+
+            <div class="form-group">
+              <AnimationSelect v-model="exampleTwo.leave.name" />
+            </div>
+
+            <div class="form-group">
+              <input type="number" v-model="exampleTwo.leave.duration">
+            </div>
           </div>
         </div>
 
-        <div class="leave-animation">
-          <h3 class="headline">Leave animation</h3>
-
-          <div class="form-group">
-            <AnimationSelect v-model="leaveAnimation.name" />
-          </div>
-
-          <div class="form-group">
-            <input type="number" v-model="leaveAnimation.duration">
-          </div>
-        </div>
+        <button class="show-button" @click="exampleTwo.visible = !exampleTwo.visible">Toggle</button>
       </div>
-  </section>
+    </section>
+
+    <section class="container">
+      <div class="transition-container">
+        <AnimatedSwing :duration="exampleOne.duration">
+          <div v-if="exampleOne.visible" class="box">SWING</div>
+        </AnimatedSwing>
+
+        <AnimatedShake :duration="exampleOne.duration">
+          <div v-if="exampleOne.visible" class="box">SHAKE</div>
+        </AnimatedShake>
+      </div>
+
+      <div class="controls-container">
+        <div class="row">
+          <h2 class="headline">Duration</h2>
+        </div>
+
+        <div class="form-group">
+          <input type="number" v-model="exampleOne.duration">
+        </div>
+
+        <button class="show-button" @click="exampleOne.visible = !exampleOne.visible">
+          {{exampleOne.visible ? 'Hide' : 'Show'}}
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        Made with &hearts; by <a href="https://github.com/codekraft-studio">Codekraft Studio</a>.
+      </p>
+    </footer>
   </div>
 </template>
 
 <script>
-import 'animate.css/animate.css'
-import AnimatedTransition from './components/AnimatedTransition.vue'
 import AnimationSelect from './components/AnimationSelect.vue'
 
 export default {
   name: 'app',
   components: {
-    AnimatedTransition,
     AnimationSelect
   },
   data () {
     return {
-      show: false,
-      enterAnimation: {
-        name: 'slideInRight',
+      exampleOne: {
+        visible: true,
         duration: 1000
       },
-      leaveAnimation: {
-        name: 'slideOutLeft',
-        duration: 1000
+      exampleTwo: {
+        visible: true,
+        mode: 'out-in',
+        enter: {
+          name: 'slideInRight',
+          duration: 1000
+        },
+        leave: {
+          name: 'slideOutLeft',
+          duration: 1000
+        }
       }
     }
   },
@@ -84,6 +132,13 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
+
+$primaryColor: #41b883;
+$bgColor: #eee;
+
 html, body, #app {
   width: 100%;
   height: 100%;
@@ -100,13 +155,14 @@ html, body, #app {
   color: #2c3e50;
   a {
     text-decoration: none;
-    color: #41b883;
+    color: $primaryColor;
   }
 }
 
-header.header {
+header {
+  background-color: $bgColor;
   width: 100%;
-  height: 100px;
+  height: 150px;
   padding: 10px;
   margin: 0 auto 32px;
   box-sizing: border-box;
@@ -114,24 +170,37 @@ header.header {
   align-items: center;
   justify-content: center;
   text-align: left;
-
   h1, h2 {
     margin: 0;
   }
-
   h2 {
     color: #476786;
   }
-
   img {
-    max-height: 100%;
+    max-height: 64px;
     margin-right: 16px;
   }
 }
-
 section {
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 50px;
+  padding: 25px 0;
+  .transition-container {
+    width: 500px;
+    margin: 0;
+  }
+  .controls-container {
+    margin-left: 32px;
+  }
+}
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: $bgColor;
+  position: fixed;
+  bottom: 0;
 }
 
 .form-group {
@@ -139,11 +208,9 @@ section {
 }
 
 .show-button {
-  background-color: #41b883;
-  border: thin solid #41b883;
-  width: 100%;
+  background-color: $primaryColor;
+  border: thin solid $primaryColor;
   height: 100%;
-  min-height: 50px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -151,43 +218,61 @@ section {
   font-size: 18px;
   max-width: 600px;
   margin: 0 auto 32px;
-  padding: 0;
+  padding: 12px 24px;
+  display: block;
 }
 
 .transition-container {
   position: relative;
-  height: 400px;
-  border: 2px solid #41b883;
-  margin: 0 auto 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 350px;
+  border: 2px solid $primaryColor;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  justify-content: space-around;
   overflow: hidden;
+  display: flex;
+  align-items: center;
   .box {
-    width: 128px;
-    height: 128px;
-    background-color: #41b883;
-    margin: 0 auto;
-    vertical-align: middle;
+    color: white;
+    line-height: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: $primaryColor;
+    border-radius: 6px;
+  }
+
+  &.absolute {
+    .box {
+      position: absolute;
+      left: calc(50% - 50px);
+    }
   }
 }
 
 .controls-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  margin-left: 32px;
+  width: 500px;
+
+  & > div {
+    margin-bottom: 16px;
+  }
+
   .headline {
-    color: #41b883;
+    color: $primaryColor;
     margin: 0 0 10px;
   }
 
-  .enter-animation {
-    text-align: right;
-    margin-right: 10px;
-  }
-  .leave-animation {
-    text-align: left;
-    margin-left: 10px;
+  .animation-names {
+    display: flex;
+    justify-content: center;
+    .enter-animation {
+      text-align: right;
+      margin-right: 10px;
+    }
+    .leave-animation {
+      text-align: left;
+      margin-left: 10px;
+    }
   }
 }
 </style>

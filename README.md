@@ -1,6 +1,6 @@
 # vue-animated
 
-> transition component for Animate.css
+> functional transition components for Animate.css
 
 Check out the project [demo](https://codekraft-studio.github.io/vue-animated/) to see it in action.
 
@@ -15,33 +15,89 @@ npm install @codekraft-studio/vue-animated
 yarn add @codekraft-studio/vue-animated
 ```
 
-Then load it in your project:
+Load it in your project with or without options:
 
 ```js
+import Vue from 'vue'
 import VueAnimated from '@codekraft-studio/vue-animated'
 
 Vue.use(VueAnimated)
 ```
 
-Than use it in your application as you would with transitions:
+```js
+import Vue from 'vue'
+import VueAnimated from '@codekraft-studio/vue-animated'
 
-```html
-<AnimatedTransition>
-  <div v-if="show" class="box"></div>
-</AnimatedTransition>
+Vue.use(VueAnimated, {
+  functional: true,
+  defaultDuration: 2000
+})
 ```
 
-Or customize it as you want, it will adapt the css animation to your settings
+The module comes with animate.css bundled to ensure the compatibility so you don't have to load it manually.
+
+## Usage
+
+It work like a normal transition component but allow you to specify the animation names and control the duration:
 
 ```html
-<AnimatedTransition enter="slideInDown" leave="slideInDown" duration="5000">
+<Animated enter="slideInRight" leave="slideOutLeft" duration="500">
+  <div v-if="show" class="box"></div>
+</Animated>
+```
+
+You can also use __all the components__ in the __kebab-kase__ form:
+
+```html
+<animated enter="bounce"></animated>
+<animated-bounce></animated-bounce>
+<AnimatedBounce></AnimatedBounce>
+```
+
+The above code will produce the same effect.
+
+
+#### Functional animation components
+
+To enable the functional components registration pass `true` to the init function options, __by default are disabled__.
+
+```js
+Vue.use(VueAnimated, {
+  functional: true
+})
+```
+
+Than quickly add animations to your application using the global components:
+
+```html
+<AnimatedBounce>
   <!-- Normal transition content -->
-</AnimatedTransition>
+</AnimatedBounce>
+
+<AnimatedSwing duration="500">
+  <!-- Normal transition content -->
+</AnimatedSwing>
+
+<AnimatedHeartBeat duration="3000" appear>
+  <!-- Normal transition content -->
+</AnimatedHeartBeat>
+```
+
+Please note that __only__ the _attention seekers_ and _special animation_ components are available, all the components relative to animation that includes enter or leaving animations can be created with the generic component:
+
+```html
+<Animated enter="rotateInDownRight" leave="rotateOutDownRight" duration="2000" mode="out-in" appear>
+  <div class="box"></div>
+</Animated>
 ```
 
 ---
 
-## Project setup
+## Development
+
+If you want to contribute to the development of this project either by making features, fixing bugs or help to do a better demo page, please follow the steps below to setup the development environment.
+
+### Project setup
 ```
 npm install
 ```
@@ -70,9 +126,6 @@ npm run lint
 ```
 npm run test:unit
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ---
 
