@@ -1,7 +1,7 @@
 {
   "name": "@codekraft-studio/vue-animated",
   "description": "Transition component for Animate.css",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "dist/VueAnimated.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
