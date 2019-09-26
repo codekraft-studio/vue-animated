@@ -12,7 +12,6 @@ Download the project using your favorite package manager:
 
 ```
 npm install @codekraft-studio/vue-animated
-yarn add @codekraft-studio/vue-animated
 ```
 
 Load it in your project with or without options:
@@ -71,15 +70,15 @@ Than quickly add animations to your application using the global components:
 
 ```html
 <AnimatedBounce>
-  <!-- Normal transition content -->
+  <!-- ... -->
 </AnimatedBounce>
 
 <AnimatedSwing duration="500">
-  <!-- Normal transition content -->
+  <!-- ... -->
 </AnimatedSwing>
 
 <AnimatedHeartBeat duration="3000" appear>
-  <!-- Normal transition content -->
+  <!-- ... -->
 </AnimatedHeartBeat>
 ```
 
@@ -93,45 +92,9 @@ Please note that __only__ the _attention seekers_ and _special animation_ compon
 
 ---
 
-## Development
-
-If you want to contribute to the development of this project either by making features, fixing bugs or help to do a better demo page, please follow the steps below to setup the development environment.
-
-### Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
----
-
 ## License
 
-This project depends to [animate.css](https://github.com/daneden/animate.css) which is also licensed under [MIT](https://github.com/daneden/animate.css/blob/master/LICENSE), this project is also released under the MIT License by [codekraft-studio](https://codekraft.it/).
+This project is released under the [MIT License](./LICENSE) by [codekraft-studio](https://codekraft.it/)
 
 
 [npm-image]: https://badge.fury.io/js/%40codekraft-studio%2Fvue-animated.svg
