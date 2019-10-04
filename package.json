@@ -1,7 +1,7 @@
 {
   "name": "@codekraft-studio/vue-animated",
   "description": "Functional animation components using Animate.css",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "main": "dist/VueAnimated.umd.js",
   "homepage": "https://codekraft-studio.github.io/vue-animated/",
   "repository": "codekraft-studio/vue-animated",
