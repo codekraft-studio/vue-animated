@@ -119,7 +119,10 @@ import Vue from 'vue'
 import {AnimatedGeneric} from '@codekraft-studio/vue-animated'
 
 Vue.component("HingeAnimation", new AnimatedGeneric("hinge", {
-  duration: 750
+  defaultDuration: {
+    enter: 0,
+    leave: 2500
+  }
 }))
 ```
 

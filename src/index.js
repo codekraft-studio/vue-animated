@@ -31,7 +31,7 @@ export {
 export default function install(Vue, opts = {}) {
   opts = {
     functional: false,
-    duration: 1000,
+    defaultDuration: 1000,
     ...opts
   }
 
