@@ -1,5 +1,6 @@
 function setAnimationDuration(el, duration, state) {
-  el.style.animationDuration = `${duration[state] || duration}ms`
+  const d = isNaN(duration[state]) ? duration : duration[state]
+  el.style.animationDuration = `${d}ms`
 }
 
 function unsetAnimationDuration(el) {
@@ -57,7 +58,7 @@ export default class AnimatedGeneric {
       const animName = name || props.name
 
       // Get custom animation duration or fallback to default
-      const duration =  props.duration || opts.defaultDuration
+      const duration = props.duration || opts.defaultDuration
 
       // Prepare the transition context
       const elData = {
