@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils'
-import AnimatedGeneric from '../../lib/AnimatedGeneric'
+import AnimatedGeneric from '@/AnimatedGeneric'
 
 const localVue = createLocalVue()
 localVue.component('animated', new AnimatedGeneric(null, {
