@@ -133,3 +133,11 @@ Now you will be able to use `HingeAnimation` component everywhere in your app.
   <!-- ... -->
 </HingeAnimation>
 ```
+
+<DemoContainer>
+  <template slot="content" slot-scope="{toggler}">
+    <HingeAnimation>
+      <div v-if="toggler" class="demo-box"></div>
+    </HingeAnimation>
+  </template>
+</DemoContainer>

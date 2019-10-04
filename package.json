@@ -5,7 +5,9 @@
   "main": "dist/VueAnimated.umd.js",
   "homepage": "https://codekraft-studio.github.io/vue-animated/",
   "repository": "codekraft-studio/vue-animated",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepublishOnly": "npm run build",
     "pretest": "npm run lint",
