@@ -23,13 +23,13 @@ The plugin can also accept options to customize the default animation behavior a
 
 When adding the plugin to the Vue instance you can pass it default properties and customize what is loaded.
 
-#### duration
+#### defaultDuration
 
 An integer that represents the default animation duration when not specified as property.
 
 ```js
 Vue.use(VueAnimated, {
-  duration: 750
+  defaultDuration: 750
 })
 ```
 

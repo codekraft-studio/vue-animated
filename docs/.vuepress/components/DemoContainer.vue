@@ -2,7 +2,9 @@
   <div class="demo-container">
     <div class="demo-controls">
       <slot name="controls">
-        <button class="demo-toggle" @click="toggle">Toggle</button>
+        <button class="demo-toggle" @click="toggle">
+          {{show ? 'Hide' : 'Show'}}
+        </button>
       </slot>
     </div>
     <slot name="content" :toggler="show"></slot>
@@ -14,7 +16,7 @@ export default {
   name: "DemoContainer",
   data () {
     return {
-      show: false
+      show: true
     }
   },
   methods: {
